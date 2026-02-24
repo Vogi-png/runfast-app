@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Home">
 
-    <!-- TODO: Update blank fragment layout -->
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/navigationTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabIndicatorAnimationMode="linear"
         app:tabIndicatorColor="#AC250E"
-        app:tabSelectedTextColor="#AC250E"
-        app:tabRippleColor="@android:color/transparent"
         app:tabIndicatorFullWidth="true"
-        app:tabIndicatorGravity="bottom">
+        app:tabIndicatorGravity="bottom"
+        app:tabRippleColor="@android:color/transparent"
+        app:tabSelectedTextColor="#AC250E">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -33,4 +34,10 @@
             android:text="Ano" />
     </com.google.android.material.tabs.TabLayout>
 
-</FrameLayout>
+    <FrameLayout
+        android:id="@+id/container_abas_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

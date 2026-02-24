@@ -47,10 +47,22 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.commit()
 
         when (fragment) {
-            is Objective -> updateStatusBarColor("#AC260F") // Laranja
-            is Profile -> updateStatusBarColor("#AC0E2B")   // Vermelho
-            is Home -> updateStatusBarColor(null)           // null para voltar ao padrão (Branco/Tema)
-            else -> updateStatusBarColor(null)
+            is Objective -> {
+                binding.floatingActionButton.hide()
+                updateStatusBarColor("#00000000")
+            } // Transparente
+            is Profile -> {
+                binding.floatingActionButton.hide()
+                updateStatusBarColor("#AC0E2B")
+            } // Vermelho
+            is Home -> {
+                binding.floatingActionButton.show()
+                updateStatusBarColor(null)
+            } // null para voltar ao padrão (Branco/Tema)
+            else -> {
+                binding.floatingActionButton.hide()
+                updateStatusBarColor(null)
+            }
         }
     }
 
