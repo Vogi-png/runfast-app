@@ -15,14 +15,14 @@ class Home : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
 
-        replaceChildFragment(fragment_semana())
+        replaceChildFragment(Week())
 
         binding.navigationTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
-                    0 -> replaceChildFragment(fragment_semana())
-                    1 -> replaceChildFragment(fragment_mes())
-                    2 -> replaceChildFragment(fragment_ano())
+                    0 -> replaceChildFragment(Week())
+                    1 -> replaceChildFragment(Month())
+                    2 -> replaceChildFragment(Year())
                 }
             }
             override fun onTabUnselected(tab: TabLayout.Tab?) {}

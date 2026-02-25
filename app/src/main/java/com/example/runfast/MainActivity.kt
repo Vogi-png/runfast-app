@@ -49,8 +49,8 @@ class MainActivity : AppCompatActivity() {
         when (fragment) {
             is Objective -> {
                 binding.floatingActionButton.hide()
-                updateStatusBarColor("#00000000")
-            } // Transparente
+                updateStatusBarColor("#AC250E")
+            } // Laranja
             is Profile -> {
                 binding.floatingActionButton.hide()
                 updateStatusBarColor("#AC0E2B")
