@@ -85,8 +85,6 @@ class MainActivity : AppCompatActivity() {
             val paddingTop = if (fragment is Profile) 0 else systemBars.top
             binding.frameLayout.setPadding(0, paddingTop, 0, 0)
 
-            // 2. Fundo: Aplicamos o padding APENAS no BottomNavigationView
-            // Isso impede que ele suba demais, pois ele respeitará apenas a barra do celular
             binding.bottomNavigationView.setPadding(0, 0, 0, systemBars.bottom)
 
             insets
