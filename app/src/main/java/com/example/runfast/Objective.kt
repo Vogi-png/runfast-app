@@ -20,8 +20,15 @@ class Objective : Fragment(R.layout.fragment_objective) {
         binding.navigationTabLayout2.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
-                    0 -> replaceChildFragment(Goal())
-                    1 -> replaceChildFragment(Inspiration())
+                    0 -> {
+                        binding.linearLayout.visibility = View.VISIBLE
+
+                        replaceChildFragment(Goal())
+                    }
+                    1 -> {
+                        binding.linearLayout.visibility = View.GONE
+                        replaceChildFragment(Inspiration())
+                    }
                 }
             }
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
