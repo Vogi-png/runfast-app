@@ -47,20 +47,20 @@ class MainActivity : AppCompatActivity() {
      */
     fun ajustarInterface(fragment: Fragment) {
         when (fragment) {
-            is GoalRegister -> {
+            is GoalImc -> {
                 binding.bottomNavigationView.visibility = View.GONE
                 binding.floatingActionButton.hide()
-                updateStatusBarColor("#AC250E") // Vermelho RunFast
+                updateStatusBarColor("#AC250E")
             }
             is Profile -> {
                 binding.bottomNavigationView.visibility = View.VISIBLE
                 binding.floatingActionButton.hide()
-                updateStatusBarColor("#00000000") // Transparente para a onda
+                updateStatusBarColor("#00000000")
             }
             is Home -> {
                 binding.bottomNavigationView.visibility = View.VISIBLE
                 binding.floatingActionButton.show()
-                updateStatusBarColor(null) // Cor padrão do sistema
+                updateStatusBarColor(null)
             }
             else -> {
                 binding.bottomNavigationView.visibility = View.VISIBLE
@@ -80,15 +80,11 @@ class MainActivity : AppCompatActivity() {
 
         ajustarInterface(fragment)
 
-        // Aplica os Insets para evitar que o conteúdo fique sob as barras do sistema
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { _, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-
-            // Se for Profile ou GoalRegister, tiramos o padding do topo (0)
             val paddingTop = if (fragment is Profile || fragment is GoalRegister) 0 else systemBars.top
             binding.frameLayout.setPadding(0, paddingTop, 0, 0)
-
-            // Padding inferior na barra de navegação
             binding.bottomNavigationView.setPadding(0, 0, 0, systemBars.bottom)
 
             insets

@@ -15,19 +15,12 @@ class GoalRegister : Fragment(R.layout.fragment_goal_register) {
         _binding = FragmentGoalRegisterBinding.bind(view)
 
 
-        binding.buttonCancel.setOnClickListener {
-            parentFragmentManager.popBackStack()
-        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-
-        parentFragment?.let { pai ->
-            (activity as? MainActivity)?.ajustarInterface(pai)
-            pai.view?.findViewById<View>(R.id.navigationTabLayout2)?.visibility = View.VISIBLE
-        }
-
+        // Apenas devolve o TabLayout, a BottomNav já está lá
+        parentFragment?.view?.findViewById<View>(R.id.navigationTabLayout2)?.visibility = View.VISIBLE
         _binding = null
     }
 }

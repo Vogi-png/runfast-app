@@ -14,22 +14,27 @@ class Goal : Fragment(R.layout.fragment_goal) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentGoalBinding.bind(view)
 
+        // IR PARA OBJETIVO
         binding.buttonObjective.setOnClickListener {
-            val proximaTela = GoalRegister()
-
-            (activity as? MainActivity)?.ajustarInterface(proximaTela)
-
             parentFragment?.view?.findViewById<View>(R.id.navigationTabLayout2)?.visibility = View.GONE
-
             parentFragmentManager.beginTransaction()
-                .replace(R.id.container_abas_objective, proximaTela)
+                .replace(R.id.container_abas_objective, GoalRegister())
                 .addToBackStack(null)
                 .commit()
         }
-    }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        // IR PARA IMC
+        binding.buttomIMC.setOnClickListener {
+            val telaImc = GoalImc()
+
+
+            (activity as? MainActivity)?.ajustarInterface(telaImc)
+
+            parentFragment?.view?.findViewById<View>(R.id.navigationTabLayout2)?.visibility = View.GONE
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.container_abas_objective, telaImc)
+                .addToBackStack(null)
+                .commit()
+        }
     }
 }
