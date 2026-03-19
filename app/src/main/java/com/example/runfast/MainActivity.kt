@@ -1,44 +1,35 @@
 package com.example.runfast
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge // Import necessário
+import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
+import androidx.fragment.app.Fragment
 import com.example.runfast.databinding.ActivityMainBinding
-// Removi o import android.app.Fragment antigo
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // 1. CHAME ISSO PRIMEIRO
         enableEdgeToEdge()
-
         super.onCreate(savedInstanceState)
 
-        // 2. INFLE O BINDING ANTES DE USÁ-LO
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 3. AGORA SIM O LISTENER (O binding.root já existe)
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-
-            // 1. Resolve o fundo: Aplicamos o padding inferior para a NavBar aparecer
-            // 2. Resolve o topo: Deixamos 0 para a imagem do Perfil poder subir
             v.setPadding(0, 0, 0, systemBars.bottom)
-
             insets
         }
 
-        // Resto do código...
         replaceFragment(Home())
 
         binding.bottomNavigationView.setOnItemSelectedListener {
-            when (it.itemId){
+            when (it.itemId) {
                 R.id.home -> replaceFragment(Home())
                 R.id.objective -> replaceFragment(Objective())
                 R.id.profile -> replaceFragment(Profile())
@@ -51,46 +42,62 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun replaceFragment(fragment: androidx.fragment.app.Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_layout, fragment)
-        fragmentTransaction.commit()
-
-        val windowInsetsController = WindowInsetsControllerCompat(window, window.decorView)
-
-        // Ajustes de cor e ícones
+    /**
+     * Função Pública para ajustar a interface (Bars/FAB) de qualquer lugar.
+     */
+    fun ajustarInterface(fragment: Fragment) {
         when (fragment) {
-            is Profile -> {
+            is GoalRegister -> {
+                binding.bottomNavigationView.visibility = View.GONE
                 binding.floatingActionButton.hide()
-                updateStatusBarColor("#00000000")
-
+                updateStatusBarColor("#AC250E") // Vermelho RunFast
+            }
+            is Profile -> {
+                binding.bottomNavigationView.visibility = View.VISIBLE
+                binding.floatingActionButton.hide()
+                updateStatusBarColor("#00000000") // Transparente para a onda
             }
             is Home -> {
+                binding.bottomNavigationView.visibility = View.VISIBLE
                 binding.floatingActionButton.show()
-                updateStatusBarColor(null)
-
+                updateStatusBarColor(null) // Cor padrão do sistema
             }
             else -> {
+                binding.bottomNavigationView.visibility = View.VISIBLE
                 binding.floatingActionButton.hide()
                 updateStatusBarColor(null)
             }
         }
+    }
 
+    /**
+     * Troca o fragmento principal e aplica ajustes de layout.
+     */
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frame_layout, fragment)
+            .commit()
 
+        ajustarInterface(fragment)
+
+        // Aplica os Insets para evitar que o conteúdo fique sob as barras do sistema
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { _, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 
-
-            val paddingTop = if (fragment is Profile) 0 else systemBars.top
+            // Se for Profile ou GoalRegister, tiramos o padding do topo (0)
+            val paddingTop = if (fragment is Profile || fragment is GoalRegister) 0 else systemBars.top
             binding.frameLayout.setPadding(0, paddingTop, 0, 0)
 
+            // Padding inferior na barra de navegação
             binding.bottomNavigationView.setPadding(0, 0, 0, systemBars.bottom)
 
             insets
         }
     }
 
+    /**
+     * Altera a cor da barra de status do Android.
+     */
     private fun updateStatusBarColor(colorHex: String?) {
         if (colorHex == null) {
             val typedValue = android.util.TypedValue()
