@@ -16,13 +16,13 @@
 
 ## ✨ Funcionalidades Principais
 
-* 🏃‍ **Monitoramento de Treinos: Registro detalhado de atividades físicas com foco em performance.
-* 📈 **Dashboard de Evolução: Visualização de progresso através de gráficos e métricas de desempenho.
-* ⚖️ **Gestão de Metas: Definição e acompanhamento de metas de peso e composição corporal.
-* 🔐 **Autenticação em Tempo Real: Sistema de login e cadastro integrado ao Firebase Auth.
-* ☁️ **Sincronização Cloud: Armazenamento seguro de dados do usuário via Firebase Realtime Database.
-* 🎨 **Design UX/UI Premium: Interface limpa, moderna e focada na usabilidade durante a prática esportiva.
-* 📊 **Análise de Dados: Processamento de informações para gerar insights sobre a constância dos treinos.
+* 🏃‍ **Monitoramento de Treinos:** Registro detalhado de atividades físicas com foco em performance.
+* 📈 **Dashboard de Evolução:** Visualização de progresso através de gráficos e métricas de desempenho.
+* ⚖️ **Gestão de Metas:** Definição e acompanhamento de metas de peso e composição corporal.
+* 🔐 **Autenticação em Tempo Real:** Sistema de login e cadastro integrado ao Firebase Auth.
+* ☁️ **Sincronização Cloud:** Armazenamento seguro de dados do usuário via Firebase Realtime Database.
+* 🎨 **Design UX/UI Premium:** Interface limpa, moderna e focada na usabilidade durante a prática esportiva.
+* 📊 **Análise de Dados:** Processamento de informações para gerar insights sobre a constância dos treinos.
 
 ---
 
@@ -42,13 +42,13 @@
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas para as seguintes tarefas:
 ### Curto Prazo
-- [ ] **Integração com Google Fit: Sincronização automática de passos e calorias.
-- [ ] **Gráficos Avançados: Implementação de bibliotecas de visualização de dados (MPAndroidChart).
-- [ ] **Notificações Push: Lembretes personalizados para hidratação e horários de treino.
+- [ ] **Integração com Google Fit:** Sincronização automática de passos e calorias.
+- [ ] **Gráficos Avançados:** Implementação de bibliotecas de visualização de dados (MPAndroidChart).
+- [ ] **Notificações Push:** Lembretes personalizados para hidratação e horários de treino.
 
 ### Médio/Longo Prazo
-- [ ] **Módulo de Dieta: Contador de macros e calorias integrado ao dashboard de peso.
-- [ ] **Social Fitness: Sistema de ranking e desafios entre amigos
+- [ ] **Módulo de Dieta:** Contador de macros e calorias integrado ao dashboard de peso.
+- [ ] **Social Fitness:** Sistema de ranking e desafios entre amigos
 ---
 
 <br/>
@@ -59,7 +59,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
 <table>
       <td align="center">
-          <img src="https://lh3.googleusercontent.com/pw/AP1GczPwlEEwYRC77F7bec6aZldaelXOu0XENiZSCipTGKNMWXivM-nhMWePGX-JT8QCiAswzcrqsBGv0fw4agh-xPP1SI7sq0Pv-osEkK1tC3acE0BwtYlmgAIzZMWo4kFacYR7liNTE99gzpC2odDNf9LUrg=w464-h420-s-no-gm?authuser=0" width="100px;" alt="Foto de Giovanna Leal de Araujo"/><br>
+          <img src="https://lh3.googleusercontent.com/pw/AP1GczOofoYSrph7MHarrBhSpGP83Jp8k7zVyHyhyRcV8QEG2jzPj31xPp5YrJZoFbDgi1Khpzi2q9nkM9JQDEHcfhu13D0oJVOt4Pypu95GwBlsVRe-TZ9u5SG3SwwR6w-Eu_7UqjQmGBnIRimEeSOuQQHwCg=w495-h515-s-no-gm?authuser=0" width="100px;" alt="Foto de Giovanna Leal de Araujo"/><br>
           <sub>
             <b>Giovanna Leal de Araujo</b>
           </sub>
