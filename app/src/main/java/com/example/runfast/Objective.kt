@@ -1,11 +1,3 @@
-package com.example.runfast
-
-import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.Fragment
-import com.example.runfast.databinding.FragmentObjectiveBinding
-import com.google.android.material.tabs.TabLayout
-
 class Objective : Fragment(R.layout.fragment_objective) {
 
     private var _binding: FragmentObjectiveBinding? = null
@@ -15,35 +7,28 @@ class Objective : Fragment(R.layout.fragment_objective) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentObjectiveBinding.bind(view)
 
-        replaceChildFragment(Goal())
+        // 1. Criamos a lista de fragmentos que vão deslizar
+        val fragments = listOf(Goal(), Inspiration())
 
-        binding.navigationTabLayout2.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                when (tab?.position) {
-                    0 -> {
-                        binding.linearLayout.visibility = View.VISIBLE
+        // 2. Configuramos o Adapter (o motor que faz o slide)
+        val adapter = object : androidx.viewpager2.adapter.FragmentStateAdapter(this) {
+            override fun getItemCount(): Int = fragments.size
+            override fun createFragment(position: Int): Fragment = fragments[position]
+        }
 
-                        replaceChildFragment(Goal())
-                    }
-                    1 -> {
-                        binding.linearLayout.visibility = View.GONE
-                        replaceChildFragment(Inspiration())
-                    }
-                }
-            }
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-        })
-    }
+        binding.viewPagerAbas.adapter = adapter
 
-    private fun replaceChildFragment(fragment: Fragment) {
-        childFragmentManager.beginTransaction()
-            .replace(R.id.container_abas_objective, fragment)
-            .commit()
-    }
+        // 3. Conectamos o TabLayout com o ViewPager2
+        com.google.android.material.tabs.TabLayoutMediator(
+            binding.navigationTabLayout2,
+            binding.viewPagerAbas
+        ) { tab, position ->
+            tab.text = if (position == 0) "Meta" else "Inspiração"
+        }.attach()
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        // O código do StackOverflow de "transparência" (se quiser aplicar no slide)
+        binding.viewPagerAbas.setPageTransformer { page, position ->
+            page.alpha = 1 - Math.abs(position) // Efeito de fade durante o slide
+        }
     }
 }

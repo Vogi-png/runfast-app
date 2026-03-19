@@ -48,35 +48,64 @@
         app:layout_constraintTop_toBottomOf="@+id/navigationTabLayout2"
         app:layout_constraintVertical_bias="0.0">
 
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="337dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Preencha seu objetivo de peso"
+                android:textColor="#FFFDFD"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="299dp"
+                android:layout_height="wrap_content"
+                android:text="Grave o peso que você está em busca de alcançar"
+                android:textColor="#DEDEDE"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="352dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#D1C0BE"
+                android:paddingStart="80dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="80dp"
+                android:paddingBottom="10dp"
+                android:text="Iniciar Objetivo"
+                android:textAllCaps="false"
+                android:textColor="#AC250E"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Buttom_IMC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Gostaria de fazer o calculo IMC ?"
+                android:textColor="#C7C1C1" />
+
+        </LinearLayout>
 
     </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="347dp"
-        android:layout_height="122dp"
-        android:layout_marginTop="50dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/navigationTabLayout2">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Preencha seu objetivo de peso"
-            android:textColor="#FFFDFD"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="299dp"
-            android:layout_height="wrap_content"
-            android:text="Grave o peso que você está em busca de alcançar"
-            android:textColor="#DEDEDE"
-            android:textSize="15sp" />
-    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
